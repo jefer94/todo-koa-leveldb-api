@@ -6,7 +6,8 @@ export const saltRounds = 10
 
 function isNotRestricted(url) {
   return !(url === '/login' ||
-           url === '/signup')
+           url === '/signup' ||
+           url === '/')
 }
 
 
