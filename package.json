@@ -1,0 +1,27 @@
+{
+  "name": "to-do-api",
+  "version": "1.0.0",
+  "main": "src/index.mjs",
+  "author": "jefer94",
+  "license": "MIT",
+  "scripts": {
+    "start": "node --experimental-modules ./src/index.mjs",
+    "dev": "nodemon --experimental-modules --inspect ./src/index.mjs",
+    "update": "npx npm-check-updates -u"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "@koa/router": "^8.0.8",
+    "bcrypt": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-helmet": "^5.2.0",
+    "koa-json": "^2.0.2",
+    "leveldown": "^5.4.1",
+    "levelup": "^4.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

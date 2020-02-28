@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  to-do-api:
+    build: .
+    ports:
+      - 80:5000
+    environment:
+      - PORT=5000
+      - DEV=true
+    volumes:
+      - ./:/usr/src
+      #- /usr/src/node_modules
+      - node_modules:/usr/src/node_modules
+      - yarn-cache:/usr/local/share/.cache/yarn/v4
+      - npm-cache:/root/.npm
+      - storage:/usr/src/.storage
+
+volumes:
+  node_modules:
+    external: false
+  yarn-cache:
+    external: false
+  npm-cache:
+    external: false
+  storage:
+    external: false
