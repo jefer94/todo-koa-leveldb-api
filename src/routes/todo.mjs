@@ -49,7 +49,6 @@ export async function addTodo(ctx) {
 }
 
 export async function removeTodo(ctx) {
-  console.log(ctx.params)
   const {id} = ctx.params
   let storage
 

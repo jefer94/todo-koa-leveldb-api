@@ -58,7 +58,6 @@ export async function signup(ctx, next) {
     catch(e) {
       id = 0
     }
-    console.log(ctx.status)
     if (!currentUser) {
       try {
         const data = {
@@ -66,7 +65,6 @@ export async function signup(ctx, next) {
           user: ctx.request.body.user,
           pass: await hash(ctx.request.body.pass, saltRounds),
         }
-        console.log(data, ctx.status)
         await put('UserId', id.toString())
         await put(`User-${ctx.request.body.user}`, JSON.stringify(data))
         data.now = Date.now()
@@ -75,7 +73,6 @@ export async function signup(ctx, next) {
         return
       }
       catch(e) {
-        console.log(500)
         ctx.status = 500
         ctx.body = ''
         return
