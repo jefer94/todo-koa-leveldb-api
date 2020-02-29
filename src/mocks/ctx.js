@@ -3,7 +3,7 @@ export default () => ({
   status: 200,
   request: {
     header: {},
-    body: {},
+    body: {}
   },
   state: {},
   params: {}

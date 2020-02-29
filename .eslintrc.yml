@@ -6,7 +6,19 @@ extends:
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
+  describe: true
+  it: true
+  before: true
 parserOptions:
   ecmaVersion: 2018
   sourceType: module
-rules: {}
+rules: 
+  semi: ["error", "never"]
+  comma-dangle: ["error", "never"]
+  brace-style: ["error", "stroustrup", { "allowSingleLine": true }]
+  no-plusplus: "off"
+  space-before-function-paren: ["error", {"anonymous": "always", "named": "never", "asyncArrow": "always"}]
+  object-curly-newline: ["error", { "ImportDeclaration": "never", "ExportDeclaration": "never" }]
+  no-empty: ["error", { "allowEmptyCatch": true }]
+  operator-linebreak: ["error", "after"]
+  curly: ["error", "multi"]

@@ -1,12 +1,12 @@
 const path = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
-const nodemonPlugin = require('nodemon-webpack-plugin')
+const NodemonPlugin = require('nodemon-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = (env, argv) => ({
   entry: {
-    server: './src',
+    server: './src'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -16,8 +16,8 @@ module.exports = (env, argv) => ({
   target: 'node',
   node: {
     // Need this when working with express, otherwise the build fails
-    __dirname: false,   // if you don't put this is, __dirname
-    __filename: false,  // and __filename return blank or /
+    __dirname: false, // if you don't put this is, __dirname
+    __filename: false // and __filename return blank or /
   },
   optimization: {
     minimize: argv.mode === 'production',
@@ -31,16 +31,16 @@ module.exports = (env, argv) => ({
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       }
     ]
   },
   // plugins: []
   plugins: [
-    argv.mode === 'development' ? new nodemonPlugin({
+    argv.mode === 'development' ? new NodemonPlugin({
       watch: path.resolve('./dist'),
       script: './dist/server.js'
     }) : false
- ].filter(Boolean)
+  ].filter(Boolean)
 })

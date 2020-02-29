@@ -10,7 +10,9 @@
     "dev": "webpack --mode development --watch --progress",
     "start": "node ./dist/server.js",
     "test": "mocha \"src/**/*.spec.js\"",
-    "testing": "mocha \"src/**/*.spec.js\" --watch"
+    "testing": "mocha \"src/**/*.spec.js\" --watch",
+    "lint": "eslint webpack.config.js src/*.js src/**/*.js",
+    "lint:fix": "eslint webpack.config.js src/*.js src/**/*.js --fix"
   },
   "dependencies": {
     "@koa/cors": "^3.0.0",
@@ -47,8 +49,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
+      "pre-push": "yarn test && yarn lint"
     }
   }
 }

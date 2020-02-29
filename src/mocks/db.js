@@ -1,20 +1,17 @@
 const storage = {}
 const db = {
-  get: async (key) => {
-    if (storage[key])
-      return storage[key]
+  async get(key) {
+    if (storage[key]) return storage[key]
 
-    throw ''
+    throw new Error('key not exist')
   },
 
-  put: async (key, value) => {
-    if (key)
-      storage[key] = `${value instanceof Array ? '[object Object]' : value}`
+  async put(key, value) {
+    if (key) storage[key] = `${value instanceof Array ? '[object Object]' : value}`
   },
 
-  del: async (key) => {
-    if (!storage[key])
-      throw ''
+  async del(key) {
+    if (!storage[key]) throw new Error('key not exist')
     storage[key] = null
   }
 }

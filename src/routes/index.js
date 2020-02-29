@@ -17,7 +17,7 @@ function index(ctx) {
 export default new Router()
   .get(todoPath, listTodo)
   .post(todoPath, addTodo)
-  .del(todoPath + '/:id', removeTodo)
+  .del(`${todoPath}/:id`, removeTodo)
   .post(loginPath, login)
   .post(signupPath, signup)
   .get(indexPath, index)

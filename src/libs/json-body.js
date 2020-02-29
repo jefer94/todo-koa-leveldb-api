@@ -1,9 +1,8 @@
-export default async function(ctx, next) {
+export default async function (ctx, next) {
   try {
-    if (ctx.body && typeof ctx.body === 'string')
-      ctx.body = JSON.parse(ctx.body)
+    if (ctx.body && typeof ctx.body === 'string') ctx.body = JSON.parse(ctx.body)
   }
-  catch(e) {}
+  catch (e) {}
   finally {
     await next()
   }

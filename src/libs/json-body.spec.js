@@ -6,9 +6,9 @@ import next from '../mocks/next'
 
 should()
 
-describe('libs/json-body', function() {
-  describe('default', function() {
-    it('response json body', async function() {
+describe('libs/json-body', () => {
+  describe('default', () => {
+    it('response json body', async () => {
       const context = ctx()
 
       context.body = '{}'
@@ -19,7 +19,7 @@ describe('libs/json-body', function() {
       type.should.be.equal('object')
     })
 
-    it('response text body', async function() {
+    it('response text body', async () => {
       const context = ctx()
 
       context.body = ''
