@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const nodemonPlugin = require('nodemon-webpack-plugin')
-const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = (env, argv) => ({
   entry: {
@@ -20,9 +20,8 @@ module.exports = (env, argv) => ({
     __filename: false,  // and __filename return blank or /
   },
   optimization: {
-    minimizer: [
-      argv.mode === 'production' ? new uglifyJsPlugin() : false
-   ].filter(Boolean)
+    minimize: argv.mode === 'production',
+    minimizer: [new TerserPlugin()]
   },
   externals: [nodeExternals()], // Need this to avoid error when working with Express
   module: {
