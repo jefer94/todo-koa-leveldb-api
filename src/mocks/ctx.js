@@ -1,8 +1,10 @@
 export default () => ({
   body: '',
-  status: 404,
+  status: 200,
   request: {
-    header: {}
+    header: {},
+    body: {},
   },
-  state: {}
+  state: {},
+  params: {}
 })

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 
 export const secret = () => process.env.SECRET || '.\`5H+C8ewL~&wat"z<-A.eHmW2M}./m)w;zbh\'aBZwshA>!M;h&dyBhnaJK{_"Y'
-export const saltRounds = () => process.env.SALT_ROUNDS || 10
+export const saltRounds = () => +(process.env.SALT_ROUNDS || 10)
 
 export function sign(data) {
   return jwt.sign(data, secret(), { expiresIn: '1d' })

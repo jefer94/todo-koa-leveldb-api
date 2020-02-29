@@ -1,8 +1,6 @@
-import bcrypt from 'bcrypt'
-import { secret, saltRounds, sign } from '../libs/jwt'
+import { compare, hash } from 'bcrypt'
+import { secret, saltRounds, sign, } from '../libs/jwt'
 import { get, put } from '../libs/db'
-
-const { compare, hash } = bcrypt
 
 export const loginPath = '/login'
 export const signupPath = '/signup'
@@ -13,14 +11,14 @@ export async function login(ctx) {
     try {
       const current = JSON.parse(await get(`User-${user}`))
 
-      if (current.id && current.pass && await compare(pass, current.pass)) {
+      if (Number.isInteger(current.id) && current.pass && await compare(pass, current.pass)) {
         current.now = Date.now()
         ctx.status = 200
-        ctx.body = sign(current, secret, { expiresIn: '1d' })
+        ctx.body = sign(current)
         return
       }
     }
-    catch(e) { }
+    catch(e) {}
 
     ctx.status = 401
     ctx.body = ''
@@ -62,13 +60,13 @@ export async function signup(ctx, next) {
         const data = {
           id,
           user: ctx.request.body.user,
-          pass: await hash(ctx.request.body.pass, saltRounds),
+          pass: await hash(ctx.request.body.pass, saltRounds()),
         }
         await put('UserId', id.toString())
         await put(`User-${ctx.request.body.user}`, JSON.stringify(data))
         data.now = Date.now()
         ctx.status = 200
-        ctx.body = sign(data, secret, { expiresIn: '1d' })
+        ctx.body = sign(data)
         return
       }
       catch(e) {
@@ -80,5 +78,5 @@ export async function signup(ctx, next) {
   }
   
   ctx.body = ''
-  ctx.response.status = 401
+  ctx.status = 401
 }

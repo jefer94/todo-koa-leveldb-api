@@ -9,9 +9,8 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch --progress",
     "start": "node ./dist/server.js",
-    "test": "jest",
-    "testing": "jest --watchAll",
-    "mocha": "mocha"
+    "test": "mocha \"src/**/*.spec.js\"",
+    "testing": "mocha \"src/**/*.spec.js\" --watch",
   },
   "dependencies": {
     "@koa/cors": "^3.0.0",
@@ -23,7 +22,7 @@
     "koa-body": "^4.1.1",
     "koa-helmet": "^5.2.0",
     "koa-json": "^2.0.2",
-    "leveldown": "^5.4.1",
+    "leveldown": "^5.5.1",
     "levelup": "^4.3.2"
   },
   "devDependencies": {
@@ -32,6 +31,7 @@
     "@babel/preset-env": "^7.8.6",
     "@babel/register": "^7.8.6",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "mocha": "^7.1.0",

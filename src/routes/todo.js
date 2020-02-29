@@ -33,7 +33,7 @@ export async function addTodo(ctx) {
       await put('ToDoId', id.toString())
       await put(`ToDo${ctx.state.user.id}`, JSON.stringify([].concat(storage, {id, name})))
       ctx.status = 201
-      ctx.body = ''
+      ctx.body = id
     }
     catch(e) {
       // res.status(500).send('')
@@ -52,7 +52,7 @@ export async function removeTodo(ctx) {
   const {id} = ctx.params
   let storage
 
-  if (typeof +id === 'number') {
+  if (id && typeof +id === 'number') {
     try {
       storage = JSON.parse((await get(`ToDo${ctx.state.user.id}`)).toString()) 
     }

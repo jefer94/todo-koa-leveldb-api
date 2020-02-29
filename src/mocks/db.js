@@ -4,15 +4,17 @@ const db = {
     if (storage[key])
       return storage[key]
 
-    // throw ''
+    throw ''
   },
 
   put: async (key, value) => {
     if (key)
-      storage[key] = `${value}`
+      storage[key] = `${value instanceof Array ? '[object Object]' : value}`
   },
 
   del: async (key) => {
+    if (!storage[key])
+      throw ''
     storage[key] = null
   }
 }
