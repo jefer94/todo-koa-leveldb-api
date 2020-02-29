@@ -1,4 +1,4 @@
-import { get, put } from '../libs/db.mjs'
+import { get, put } from '../libs/db'
 export const todoPath = '/todo'
 
 export async function listTodo(ctx) {

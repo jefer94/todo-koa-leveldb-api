@@ -1,15 +1,17 @@
 import jwt from 'jsonwebtoken'
 
-export const secret = '.\`5H+C8ewL~&wat"z<-A.eHmW2M}./m)w;zbh\'aBZwshA>!M;h&dyBhnaJK{_"Y'
-export const saltRounds = 10
+export const secret = () => process.env.SECRET || '.\`5H+C8ewL~&wat"z<-A.eHmW2M}./m)w;zbh\'aBZwshA>!M;h&dyBhnaJK{_"Y'
+export const saltRounds = () => process.env.SALT_ROUNDS || 10
 
+export function sign(data) {
+  return jwt.sign(data, secret(), { expiresIn: '1d' })
+}
 
 function isNotRestricted(url) {
   return !(url === '/login' ||
            url === '/signup' ||
            url === '/')
 }
-
 
 export default async function(ctx, next) {
   ctx.state.user = { id: 0 }
@@ -25,7 +27,7 @@ export default async function(ctx, next) {
 
     else {
       try {
-        const data = jwt.verify(authorization.replace('Bearer ', ''), secret)
+        const data = jwt.verify(authorization.replace('Bearer ', ''), secret())
         if (data) {
           ctx.state.user = data
         }
@@ -37,5 +39,4 @@ export default async function(ctx, next) {
     }
   }
   await next()
-  // return res.status(401).send([])
 }

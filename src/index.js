@@ -1,12 +1,14 @@
+import 'regenerator-runtime/runtime'
 import Koa from 'koa'
 import cors from '@koa/cors'
 import koaBody from 'koa-body'
 import json from 'koa-json'
-import jsonBody from './libs/jsonBody.mjs'
-import router from './routes/index.mjs'
+import jsonBody from './libs/jsonBody'
+import router from './routes'
 import helmet from 'koa-helmet'
-import jwtMiddleware from './libs/jwt.mjs'
+import jwtMiddleware from './libs/jwt'
 import process from 'process'
+
 
 const app = new Koa()
 

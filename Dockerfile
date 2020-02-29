@@ -1,5 +1,5 @@
 FROM node:13
-
+RUN echo a
 ARG PORT
 
 ENV PORT=5000
@@ -14,6 +14,8 @@ COPY yarn.lock .
 RUN yarn install
 
 COPY . .
+
+RUN yarn build
 
 EXPOSE 5000
 CMD ["yarn", "start"]

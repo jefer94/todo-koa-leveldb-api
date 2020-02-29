@@ -1,6 +1,6 @@
 import Router from '@koa/router'
-import { login, signup, loginPath, signupPath } from './auth.mjs'
-import { addTodo, removeTodo, listTodo, todoPath } from './todo.mjs'
+import { login, signup, loginPath, signupPath } from './auth'
+import { addTodo, removeTodo, listTodo, todoPath } from './todo'
 
 const indexPath = '/'
 
