@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  to-do-api:
+  todo-api:
     build: .
     ports:
       - 80:5000
     environment:
-      - PORT=5000
-      - DEV=true
+      - SECRET=.`5H+C8ewL~&wat"z<-A.eHmW2M}./m)w;zbh\'aBZwshA>!M;h&dyBhnaJK{_"Y
+      - SALT_ROUNDS=10
     volumes:
       - ./:/usr/src
       #- /usr/src/node_modules

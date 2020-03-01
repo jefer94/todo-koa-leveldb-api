@@ -1,8 +1,8 @@
 {
-  "name": "to-do-api",
+  "name": "todo-api",
   "version": "1.0.0",
   "main": "src/index.js",
-  "author": "jefer94",
+  "author": "Jeferson De Freitas <jdefreitaspinto@gmail.com> (https://todo-api-demonstration.herokuapp.com/)",
   "license": "MIT",
   "scripts": {
     "update": "npx npm-check-updates -u",
@@ -42,6 +42,7 @@
     "nodemon": "^2.0.2",
     "nodemon-webpack-plugin": "^4.3.1",
     "prettier": "^1.19.1",
+    "regenerator-runtime": "^0.13.3",
     "terser-webpack-plugin": "^2.3.5",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
