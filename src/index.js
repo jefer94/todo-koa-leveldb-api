@@ -6,9 +6,11 @@ import json from 'koa-json'
 // import jsonBody from './libs/jsonBody'
 import helmet from 'koa-helmet'
 import process from 'process'
+import { config } from 'dotenv'
 import router from './routes'
 import jwtMiddleware from './libs/jwt'
 
+config()
 
 const app = new Koa()
 
